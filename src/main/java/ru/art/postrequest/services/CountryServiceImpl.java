@@ -10,10 +10,7 @@ import ru.art.postrequest.entities.Country;
 import ru.art.postrequest.utils.Request;
 import ru.art.postrequest.utils.Response;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
@@ -49,7 +46,7 @@ public class CountryServiceImpl implements CountryService {
             conn.setDoOutput(true);
 
             ObjectMapper mapper = new ObjectMapper();
-            DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
+            BufferedOutputStream wr = new  BufferedOutputStream(conn.getOutputStream());
             mapper.writeValue(wr, request);
             wr.flush();
             wr.close();
